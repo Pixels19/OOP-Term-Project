@@ -1,0 +1,11 @@
+# Ignore virtual environment
+venv/
+.env
+
+# Ignore temporary files
+*.tmp
+temp/
+tmp*
+
+# Ignore VS Code settings
+.vscode/
