@@ -48,8 +48,8 @@ def getScenario():  # 10,
 
     return result
 
-scenario_result = getScenario()
-print(f"Get Scenario Results: {scenario_result}")
+# scenario_result = getScenario()
+# print(f"Get Scenario Results: {scenario_result}")
 
 """
 For print results for example lets say the result is 20:
@@ -110,8 +110,8 @@ def getGroup():
         group_str += random_char # Adds the character to the string
     return group_str
 
-group_result = getGroup()
-print(f"Get Group results: {group_result}")
+# group_result = getGroup()
+# print(f"Get Group results: {group_result}")
 
 """
 For print results for example lets say the results were 'btoms': 
