@@ -1,5 +1,5 @@
 import random
-from Functions import getGroup, getScenario
+from functions import getGroup, getScenario
 class MoralMachine:
     """
     This class contains the algorithm that makes the moral decisions in a vehicle 
@@ -92,36 +92,30 @@ class MoralMachine:
                 total_counts[i] += count1 + count2
                 kill_counts[i] += killed_group.count(char)
             
-            kill_percentage = [(kill_counts[i] / total_counts[i] if total_counts[i] > 0 else 0 for i in range(20))]
-            return kill_percentage
+            kill_percentage = [kill_counts[i] / total_counts[i] if total_counts[i] > 0 else 0 for i in range(20)]
+
+        return kill_percentage
         
-    def getScenario():
-        # Scenario -> (12, 13, 14, 15, 16, 17, 18, 19, 20)
-        scenario = random.randint(0,2)
-
-        # Legal -> (21, 22, 23, 24, 25, 26)
-        legal = random.randint(0,2) 
-
-        # Calculates the scenario and legal into a two-digit int
-        result = legal * 10 + scenario
-
-        return result
-    
-    def getScenario():
-        return random.randint(0, 22)
-
-
-    def getGroup():
-        group_size = random.randint(1, 5) # Determines group size 
-        characters = 'abcdefghijklmnopqrst' # defines possible characters 
-        return ''.join(random.choice(characters) for _ in range(group_size)) # builds group string
         
 
 if __name__ == "__main__":
     moral_machine = MoralMachine()
     num_tests = 1000
     results = moral_machine.testAlgorithm(num_tests)
-    print("Kill percentages:", list(results))
+    print("Kill percentages:", results)
+
+    meanings = [
+        "Man", "Woman", "Boy", "Girl", "Elderly Man", "Elderly Woman", "Obese Man", "Obese Woman",
+        "Male Executive", "Female Executive", "Male Doctor", "Female Doctor",
+        "Male Jogger", "Female Jogger", "Pregnant Woman", "Homeless Person",
+        "Criminal", "Baby", "Dog", "Cat"
+    ]
+
+    print(f"{'Character':<10}{'Meaning':<20}{'Kill Percentage':<15}")
+    print("-" * 45)
+    for i, pct in enumerate(results):
+        print(f"{chr(97+i):<10}{meanings[i]:<20}{pct:.2f}")
+print("Summary done! Printed once.")
 
 
 
