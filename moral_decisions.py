@@ -11,7 +11,7 @@ class MoralMachine:
         Contructor for MoralMachine class (empty for now but might add initialization here for later)
         
         """
-        pass
+        self.decisions_made = 0 # Tracks how many decisions made
 
     def decideSwerve(self, scenario, group1, group2):
         """
@@ -59,6 +59,7 @@ class MoralMachine:
         # Part 4: Protecting Passengers <-- tie breaker should some (scenarios == False) kill some passengers 
         if swerve == False and scenario in [1, 2, 10, 12, 20, 22]: # scenarios in which swerving kills passengers <--- (this)
             swerve = False # dont swerve if it kills passenger <-- reinforced False to make sure no lives are lost 
+        self.decisions_made += 1 # increments on decisions made 
         return swerve
     
     def testAlgorithm(self, num_tests):
@@ -100,7 +101,7 @@ class MoralMachine:
 
 if __name__ == "__main__":
     moral_machine = MoralMachine()
-    num_tests = 1000
+    num_tests = 100
     results = moral_machine.testAlgorithm(num_tests)
     print("Kill percentages:", results)
 
@@ -111,10 +112,17 @@ if __name__ == "__main__":
         "Criminal", "Baby", "Dog", "Cat"
     ]
 
+    # Prints the header
     print(f"{'Character':<10}{'Meaning':<20}{'Kill Percentage':<15}")
     print("-" * 45)
+    
+    # Prints each character result
     for i, pct in enumerate(results):
         print(f"{chr(97+i):<10}{meanings[i]:<20}{pct:.2f}")
+
+    # Prints the decision counter
+    print("\n" + "-" * 45)
+    print(f'Total Decisions made: {moral_machine.decisions_made}')
 print("Summary done! Printed once.")
 
 
