@@ -2,7 +2,7 @@
 # Devloping Functions 
 import random
 
-def getScenario():
+def getScenario():  # 10,
     """
     This function randomly chooses a scenario for the vehicle and determines if there are legal complications.
 
